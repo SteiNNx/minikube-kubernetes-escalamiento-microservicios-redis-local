@@ -94,6 +94,26 @@ sh scripts/suit-deploy-minikube-local --k8s=down
 
 ---
 
+## 🧩 Despliegue de Microservicios y Redis - Helm
+
+### Microservicios y Redis
+
+```bash
+# Desplegar MS y Redis
+sh scripts/suit-deploy-helm-local --helm=deploy
+
+# Obtener IPs de los MS y Redis
+sh scripts/suit-deploy-helm-local --helm=ips
+
+# Ver logs de los MS y Redis
+sh scripts/suit-deploy-helm-local --helm=logs
+
+# Eliminar despliegue de MS y Redis
+sh scripts/suit-deploy-helm-local --helm=down
+```
+
+---
+
 ## 🔗 Recursos Útiles
 
 - [Guía de herramientas de Kubernetes](https://kubernetes.io/es/docs/tasks/tools/)
