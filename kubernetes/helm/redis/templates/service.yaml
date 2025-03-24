@@ -1,0 +1,19 @@
+# ================================
+# Service para exponer Redis
+# ================================
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Chart.Name }}-service         # Nombre del Service
+
+spec:
+  selector:
+    app: {{ .Values.labels.app }}         # Selector que encuentra los pods con etiqueta app=redis
+
+  type: {{ .Values.service.type }}        # Tipo de servicio: NodePort, ideal para Minikube o pruebas locales
+
+  ports:
+    - port: {{ .Values.service.port }}          # Puerto del clúster
+      targetPort: {{ .Values.containerPort }}   # Puerto interno del contenedor Redis
+      nodePort: {{ .Values.service.nodePort }}  # Puerto accesible externamente

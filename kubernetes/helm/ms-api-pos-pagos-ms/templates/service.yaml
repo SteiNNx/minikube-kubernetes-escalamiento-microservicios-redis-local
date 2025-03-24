@@ -1,0 +1,19 @@
+# ================================
+# Service para exponer la app ms-api-pos-pagos-ms
+# ================================
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Chart.Name }}-service           # Nombre del Service (por convención)
+
+spec:
+  selector:
+    app: {{ .Values.labels.app }}           # Selecciona pods con esta etiqueta
+
+  type: {{ .Values.service.type }}          # Tipo de Service (NodePort, ClusterIP, LoadBalancer, etc.)
+
+  ports:
+    - port: {{ .Values.service.port }}      # Puerto interno del clúster
+      targetPort: {{ .Values.containerPort }}  # Puerto dentro del contenedor
+      nodePort: {{ .Values.service.nodePort }} # Puerto del nodo para acceder externamente

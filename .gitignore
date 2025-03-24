@@ -1,0 +1,8 @@
+
+# package-lock.json
+/src/ms-api-pos/package-lock.json
+/src/ms-api-pos-pagos-ms/package-lock.json
+
+# node_modules
+/src/ms-api-pos/node_modules
+/src/ms-api-pos-pagos-ms/node_modules

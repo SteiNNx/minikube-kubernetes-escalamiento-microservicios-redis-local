@@ -1,0 +1,28 @@
+# ================================
+# Deployment para ms-api-pos
+# ================================
+
+apiVersion: apps/v1                 # Versión de la API para recursos tipo Deployment
+kind: Deployment                    # Tipo de recurso: Deployment
+metadata:
+  name: ms-api-pos                  # Nombre único del Deployment
+  labels:
+    app: ms-api-pos                 # Etiqueta utilizada para búsqueda y emparejamiento
+
+spec:
+  replicas: 5                       # Número deseado de réplicas (pods) que se ejecutarán
+  selector:
+    matchLabels:
+      app: ms-api-pos              # Selector para encontrar los pods con esta etiqueta
+
+  template:                         # Plantilla para crear los pods
+    metadata:
+      labels:
+        app: ms-api-pos            # Etiqueta que se asignará a los pods creados
+
+    spec:
+      containers:
+        - name: ms-api-pos                 # Nombre del contenedor dentro del pod
+          image: ms-api-pos:local          # Imagen a usar (construida localmente o desde un registry)
+          ports:
+            - containerPort: 3000          # Puerto en el que la aplicación escucha dentro del contenedor

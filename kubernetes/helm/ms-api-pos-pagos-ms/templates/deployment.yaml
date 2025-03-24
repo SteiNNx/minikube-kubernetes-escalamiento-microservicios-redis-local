@@ -1,0 +1,28 @@
+# ================================
+# Deployment para ms-api-pos-pagos-ms
+# ================================
+
+apiVersion: apps/v1                  # Versión de la API para recursos tipo Deployment
+kind: Deployment                     # Tipo de recurso: Deployment
+metadata:
+  name: {{ .Chart.Name }}            # Nombre del Deployment
+  labels:
+    app: {{ .Values.labels.app }}    # Etiqueta para identificar los pods y asociarlos al Service
+
+spec:
+  replicas: {{ .Values.replicaCount }}  # Número de réplicas a ejecutar
+  selector:
+    matchLabels:
+      app: {{ .Values.labels.app }}     # Selector que enlaza este Deployment con los pods correctos
+
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.labels.app }}   # Etiqueta que se asignará a cada pod creado
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}       # Nombre del contenedor
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}   # Imagen del contenedor
+          imagePullPolicy: {{ .Values.image.pullPolicy }}                 # Política de descarga de imagen
+          ports:
+            - containerPort: {{ .Values.containerPort }}  # Puerto en el que la app escucha dentro del contenedor

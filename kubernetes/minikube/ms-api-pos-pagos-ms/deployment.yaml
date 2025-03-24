@@ -1,0 +1,28 @@
+# ================================
+# Deployment para ms-api-pos-pagos-ms
+# ================================
+
+apiVersion: apps/v1                  # Versión de la API para recursos tipo Deployment
+kind: Deployment                     # Tipo de recurso: Deployment
+metadata:
+  name: ms-api-pos-pagos-ms         # Nombre único del Deployment
+  labels:
+    app: ms-api-pos-pagos-ms        # Etiqueta usada para organizar y seleccionar recursos relacionados
+
+spec:
+  replicas: 5                        # Número deseado de réplicas (pods) que se ejecutarán
+  selector:
+    matchLabels:
+      app: ms-api-pos-pagos-ms      # Selector para encontrar los pods que este Deployment manejará
+
+  template:                          # Plantilla para crear los pods
+    metadata:
+      labels:
+        app: ms-api-pos-pagos-ms    # Etiqueta que se asignará a los pods creados
+
+    spec:
+      containers:
+        - name: ms-api-pos-pagos-ms           # Nombre del contenedor
+          image: ms-api-pos-pagos-ms:local    # Imagen a usar (puede ser local o desde un registry)
+          ports:
+            - containerPort: 3000             # Puerto que expone la app dentro del contenedor

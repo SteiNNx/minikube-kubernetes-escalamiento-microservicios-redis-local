@@ -1,0 +1,24 @@
+FROM node:16
+
+# Dockerfile.ms-api-pos
+
+# Crea y usa un directorio dentro del contenedor
+WORKDIR /app
+
+# Copiamos únicamente el package.json y package-lock.json de ms-api-pos
+COPY ../src/ms-api-pos/package*.json ./
+
+# Instalamos dependencias
+RUN npm install
+
+# Copiamos todo el contenido de la carpeta ms-api-pos (donde está index.js)
+COPY ../src/ms-api-pos/ .
+
+# Aquí imprimimos el contenido de la carpeta para verificar que se haya copiado todo
+# RUN ls -lR
+
+# Exponemos puerto 3000 (opcional)
+EXPOSE 3000
+
+# Comando de inicio
+CMD ["node", "src/index.js"]

@@ -1,0 +1,66 @@
+# Forzar fin de línea LF para todos los archivos de texto (bueno para proyectos multiplataforma)
+* text=auto eol=lf
+
+# Archivos específicos que deben tener CRLF (si los necesitas en Windows, por ejemplo)
+# *.bat text eol=crlf
+# *.cmd text eol=crlf
+
+# Archivos de configuración (YAML, JSON, etc.)
+*.yml text
+*.yaml text
+*.json text
+*.xml text
+*.toml text
+*.env text
+*.ini text
+
+# Archivos de código fuente
+*.js text
+*.ts text
+*.tsx text
+*.jsx text
+*.html text
+*.css text
+*.scss text
+*.java text
+*.kt text
+*.php text
+*.py text
+*.rb text
+*.go text
+*.c text
+*.cpp text
+*.h text
+*.cs text
+*.sql text
+*.sh text eol=lf
+*.md text
+
+# Archivos que nunca deben ser tratados como texto (binarios)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.tar binary
+*.gz binary
+*.7z binary
+*.mp4 binary
+*.mp3 binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+
+# Forzar que los scripts bash tengan LF (muy útil si se usa en Linux o CI/CD)
+*.sh text eol=lf
+
+# Forzar formato en Dockerfile
+Dockerfile text eol=lf
+
+# Otros archivos comunes
+*.log text
+*.lock text
+*.conf text

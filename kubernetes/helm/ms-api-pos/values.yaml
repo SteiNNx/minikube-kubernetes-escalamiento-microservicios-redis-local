@@ -1,0 +1,16 @@
+replicaCount: 5
+
+image:
+  repository: ms-api-pos
+  tag: local
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 3000
+  nodePort: 30009
+
+containerPort: 3000
+
+labels:
+  app: ms-api-pos

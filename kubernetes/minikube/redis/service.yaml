@@ -1,0 +1,19 @@
+# ================================
+# Service para exponer Redis
+# ================================
+
+apiVersion: v1                      # Versión de la API para recursos tipo Service
+kind: Service                       # Tipo de recurso: Service
+metadata:
+  name: redis-service               # Nombre único del Service
+
+spec:
+  selector:
+    app: redis                      # Selector que encuentra los pods con la etiqueta app=redis
+
+  type: NodePort                    # Tipo de servicio: expone el puerto del pod a nivel de nodo
+
+  ports:
+    - port: 6379                    # Puerto lógico del Service dentro del clúster
+      targetPort: 6379              # Puerto interno del contenedor Redis
+      nodePort: 30010               # Puerto accesible desde fuera del clúster (ej. Minikube)

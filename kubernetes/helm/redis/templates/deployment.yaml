@@ -1,0 +1,29 @@
+# ================================
+# Deployment para Redis
+# ================================
+
+apiVersion: apps/v1                 # Versión de la API para recursos tipo Deployment
+kind: Deployment                    # Tipo de recurso: Deployment
+metadata:
+  name: {{ .Chart.Name }}           # Nombre único del Deployment
+  labels:
+    app: {{ .Values.labels.app }}   # Etiqueta usada para organizar y seleccionar recursos
+
+spec:
+  replicas: {{ .Values.replicaCount }}      # Número de réplicas (pods) a ejecutar
+  selector:
+    matchLabels:
+      app: {{ .Values.labels.app }}         # Selector que empareja los pods con esta etiqueta
+
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.labels.app }}       # Etiqueta que se asignará a los pods creados
+
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}                   # Nombre del contenedor
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}   # Imagen oficial de Redis
+          imagePullPolicy: {{ .Values.image.pullPolicy }}                 # Política de descarga
+          ports:
+            - containerPort: {{ .Values.containerPort }}  # Puerto que expone Redis internamente

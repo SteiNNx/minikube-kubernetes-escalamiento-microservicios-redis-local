@@ -1,0 +1,91 @@
+###
+# ms-api-pos (puerto 30009)
+###
+### 1. Petición de Anulación
+POST http://192.168.250.200:30009/pagar_ms/anulacion
+Content-Type: application/json
+
+{
+  "idPago": "177c21f0-3ca0-4a7a-af1a-40d99ee61dc6",
+  "rrn": "688015368836",
+  "datosComercio": {
+    "MCC": "5411",
+    "clientAppOrg": "prueba"
+  },
+  "datosTarjeta": {
+    "cardEntryMode": "071",
+    "invoiceData": "55555"
+  },
+  "secureFields": {
+    "track2": "A0060C0E8A7417C46E4..."
+  },
+  "localTimeFormat": "2025-03-21:16:06:39.969",
+  "UTCTimeFormat": "2025-03-21:19:06:39.977"
+}
+
+### 2. Petición de Reversa
+POST http://192.168.250.200:30009/pagar_ms/reversa
+Content-Type: application/json
+
+{
+  "idPago": "bb968a07-8401-4c7d-9a93-782f2eeb3cab",
+  "rrn": "440771058924",
+  "datosComercio": {
+    "MCC": "5411",
+    "clientAppOrg": "prueba"
+  },
+  "datosTarjeta": {
+    "cardEntryMode": "071"
+  },
+  "secureFields": {
+    "track2": "AAAA17C46E40917AB0..."
+  },
+  "localTimeFormat": "2025-03-21:16:06:39.969",
+  "UTCTimeFormat": "2025-03-21:19:06:39.977"
+}
+
+### 3. Petición de Reversa + Anulación
+POST http://192.168.250.200:30009/pagar_ms/reversa_anulacion
+Content-Type: application/json
+
+{
+  "idPago": "177c21f0-3ca0-4a7a-af1a-40d99ee61dc6",
+  "rrn": "688015368836",
+  "datosComercio": {
+    "MCC": "5411",
+    "clientAppOrg": "prueba"
+  },
+  "datosTarjeta": {
+    "cardEntryMode": "071"
+  },
+  "secureFields": {
+    "track2": "A0060C0E8A7417C46E4..."
+  },
+  "localTimeFormat": "2025-03-21:16:06:39.969",
+  "UTCTimeFormat": "2025-03-21:19:06:39.977"
+}
+
+###
+# ms-api-pos-pagos-ms (puerto 30008)
+###
+### 4. Petición de Pago
+POST http://172.29.123.16:30008/pagar_ms/pagar
+Content-Type: application/json
+
+{
+  "idPago": "227c21f0-3ca0-4a7a-af1a-90d99ee61dc6",
+  "rrn": "000000000000",
+  "datosComercio": {
+    "MCC": "5411",
+    "clientAppOrg": "prueba"
+  },
+  "datosTarjeta": {
+    "cardEntryMode": "071",
+    "invoiceData": "55555"
+  },
+  "secureFields": {
+    "track2": "ZZZZ0C0E8A7417C46E4..."
+  },
+  "localTimeFormat": "2025-03-21:16:06:39.969",
+  "UTCTimeFormat": "2025-03-21:19:06:39.977"
+}

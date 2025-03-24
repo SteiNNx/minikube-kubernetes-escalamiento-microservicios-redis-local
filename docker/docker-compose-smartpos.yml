@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  ms-api-pos:
+    build:
+      context: ..
+      dockerfile: ./docker/Dockerfile.ms-api-pos
+    container_name: ms-api-pos
+    ports:
+      - "3000:3000"
+
+  ms-api-pos-pagos-ms:
+    build:
+      context: ..
+      dockerfile: ./docker/Dockerfile.ms-api-pos-pagos-ms
+    container_name: ms-api-pos-pagos-ms
+    ports:
+      - "3001:3000"

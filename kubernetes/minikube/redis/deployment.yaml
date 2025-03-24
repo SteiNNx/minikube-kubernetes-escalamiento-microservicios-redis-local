@@ -1,0 +1,26 @@
+# ================================
+# Deployment para Redis
+# ================================
+
+apiVersion: apps/v1                 # Versión de la API para recursos tipo Deployment
+kind: Deployment                    # Tipo de recurso: Deployment
+metadata:
+  name: redis                       # Nombre único del Deployment
+
+spec:
+  replicas: 1                       # Número de réplicas (pods) a ejecutar
+  selector:
+    matchLabels:
+      app: redis                    # Selector que empareja los pods con esta etiqueta
+
+  template:                         # Plantilla para definir los pods
+    metadata:
+      labels:
+        app: redis                  # Etiqueta que se asignará a los pods creados
+
+    spec:
+      containers:
+        - name: redis                      # Nombre del contenedor
+          image: redis:6.2.6               # Imagen oficial de Redis, versión 6.2.6
+          ports:
+            - containerPort: 6379          # Puerto por defecto que expone Redis

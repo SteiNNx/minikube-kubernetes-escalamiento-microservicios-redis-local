@@ -1,0 +1,19 @@
+# ================================
+# Service para exponer la app ms-api-pos-pagos-ms
+# ================================
+
+apiVersion: v1                        # Versión de la API para recursos tipo Service
+kind: Service                         # Tipo de recurso: Service
+metadata:
+  name: ms-api-pos-pagos-ms-service  # Nombre único del Service
+
+spec:
+  selector:
+    app: ms-api-pos-pagos-ms         # Selecciona los pods con esta etiqueta (match con el Deployment)
+
+  type: NodePort                     # Tipo de servicio: expone el puerto a nivel de nodo (ideal para Minikube)
+
+  ports:
+    - port: 3000                     # Puerto lógico del Service dentro del clúster
+      targetPort: 3000              # Puerto en el contenedor al que redirigir el tráfico
+      nodePort: 30008               # Puerto en el nodo para acceder desde fuera (ej. http://<IP>:30008)

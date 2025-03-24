@@ -1,0 +1,6 @@
+apiVersion: v2
+name: ms-api-pos
+description: Helm chart for ms-api-pos
+type: application
+version: 0.1.0
+appVersion: "1.0.0"

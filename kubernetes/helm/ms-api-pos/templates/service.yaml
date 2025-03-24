@@ -1,0 +1,16 @@
+# ================================
+# Service para ms-api-pos
+# ================================
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Chart.Name }}-service
+spec:
+  selector:
+    app: {{ .Values.labels.app }}
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.containerPort }}
+      nodePort: {{ .Values.service.nodePort }}
